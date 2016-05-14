@@ -45,6 +45,12 @@ static int16_t gNextPacketPtr;
 #define ENC28J60_CONTROL_SI PORTB5
 #define ENC28J60_CONTROL_SCK PORTB7
 #endif
+#if defined(__AVR_ATmega2560__)
+#define ENC28J60_CONTROL_CS PORTB0
+#define ENC28J60_CONTROL_SO PORTB3
+#define ENC28J60_CONTROL_SI PORTB2
+#define ENC28J60_CONTROL_SCK PORTB1
+#endif
 // set CS to 0 = active
 #define CSACTIVE ENC28J60_CONTROL_PORT&=~(1<<ENC28J60_CONTROL_CS)
 // set CS to 1 = passive
