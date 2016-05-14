@@ -18,6 +18,7 @@ class GizmoTCP
   
     GizmoTCP(uint8_t* buf,unsigned int len);
     void init(uint8_t *mac_address, uint8_t *ip_address);
+    void blink_led();
     unsigned int PacketReceive();
     void setDestMAC(uint8_t *destmac);
     void setDestIP(uint8_t *destip);

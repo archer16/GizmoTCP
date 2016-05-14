@@ -16,6 +16,35 @@ static uint8_t arpstate;
     buffer_length = len;
   }
   
+  
+  void GizmoTCP::blink_led()
+  {
+    // 0x880 is PHLCON LEDB=on, LEDA=on
+    // enc28j60PhyWrite(PHLCON,0b0000 1000 1000 00 00);
+    enc28j60PhyWrite (PHLCON, 0x880);
+    delay (500);
+  
+    // 0x990 is PHLCON LEDB=off, LEDA=off
+    // enc28j60PhyWrite(PHLCON,0b0000 1001 1001 00 00);
+    enc28j60PhyWrite (PHLCON, 0x990);
+    delay (500);
+  
+    // 0x880 is PHLCON LEDB=on, LEDA=on
+    // enc28j60PhyWrite(PHLCON,0b0000 1000 1000 00 00);
+    enc28j60PhyWrite (PHLCON, 0x880);
+    delay (500);
+  
+    // 0x990 is PHLCON LEDB=off, LEDA=off
+    //enc28j60PhyWrite(PHLCON,0b0000 1001 1001 00 00);
+    enc28j60PhyWrite (PHLCON, 0x990);
+    delay (500);
+  
+    // 0x476 is PHLCON LEDA=links status, LEDB=receive/transmit
+    // enc28j60PhyWrite(PHLCON,0b0000 0100 0111 01 10);
+    enc28j60PhyWrite (PHLCON, 0x476);
+    delay (100);
+  }
+  
   void GizmoTCP::init(uint8_t *mac_address, uint8_t *ip_address)
   {
     enc28j60Init(mac_address);
